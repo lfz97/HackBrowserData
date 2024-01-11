@@ -1,17 +1,17 @@
-package browingdata
+package browsingdata
 
 import (
 	"path"
 
-	"github.com/moond4rk/hackbrowserdata/browingdata/bookmark"
-	"github.com/moond4rk/hackbrowserdata/browingdata/cookie"
-	"github.com/moond4rk/hackbrowserdata/browingdata/creditcard"
-	"github.com/moond4rk/hackbrowserdata/browingdata/download"
-	"github.com/moond4rk/hackbrowserdata/browingdata/extension"
-	"github.com/moond4rk/hackbrowserdata/browingdata/history"
-	"github.com/moond4rk/hackbrowserdata/browingdata/localstorage"
-	"github.com/moond4rk/hackbrowserdata/browingdata/password"
-	"github.com/moond4rk/hackbrowserdata/browingdata/sessionstorage"
+	"github.com/moond4rk/hackbrowserdata/browsingdata/bookmark"
+	"github.com/moond4rk/hackbrowserdata/browsingdata/cookie"
+	"github.com/moond4rk/hackbrowserdata/browsingdata/creditcard"
+	"github.com/moond4rk/hackbrowserdata/browsingdata/download"
+	"github.com/moond4rk/hackbrowserdata/browsingdata/extension"
+	"github.com/moond4rk/hackbrowserdata/browsingdata/history"
+	"github.com/moond4rk/hackbrowserdata/browsingdata/localstorage"
+	"github.com/moond4rk/hackbrowserdata/browsingdata/password"
+	"github.com/moond4rk/hackbrowserdata/browsingdata/sessionstorage"
 	"github.com/moond4rk/hackbrowserdata/item"
 	"github.com/moond4rk/hackbrowserdata/log"
 	"github.com/moond4rk/hackbrowserdata/utils/fileutil"
@@ -41,6 +41,7 @@ func (d *Data) Recovery(masterKey []byte) error {
 	for _, source := range d.sources {
 		if err := source.Parse(masterKey); err != nil {
 			log.Errorf("parse %s error %s", source.Name(), err.Error())
+			continue
 		}
 	}
 	return nil
